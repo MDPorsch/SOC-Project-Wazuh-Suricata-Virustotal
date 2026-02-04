@@ -21,7 +21,7 @@ To monitor specific threat actors, I implemented custom rules in /var/lib/surica
 
 bash
 alert ip [TARGET_IP] any -> any any (msg:"SECURITY_FLAG: Potential Threat IP Detected"; sid:1000002; rev:1;)
-Use code with caution.
+
 
 
 2. Wazuh-Suricata Integration
@@ -32,7 +32,7 @@ xml
   <log_format>json</log_format>
   <location>/var/log/suricata/eve.json</location>
 </localfile>
-Use code with caution.
+
 
 
 3. VirusTotal Automated Response
@@ -44,7 +44,7 @@ Enabled automated threat lookups in the Wazuh Manager ossec.conf:
   <group>syscheck</group>
   <alert_format>json</alert_format>
 </integration>
-Use code with caution.
+
 
 
 Validation & Testing
