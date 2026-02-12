@@ -19,32 +19,34 @@ Configuration Inventory
 1. Suricata Network Flagging
 To monitor specific threat actors, I implemented custom rules in /var/lib/suricata/rules/local.rules:
 
-bash
+```bash
 alert ip [TARGET_IP] any -> any any (msg:"SECURITY_FLAG: Potential Threat IP Detected"; sid:1000002; rev:1;)
-
+```
 
 
 2. Wazuh-Suricata Integration
 Integrated the engines by configuring the Wazuh Agent's ossec.conf to ingest Suricata’s EVE JSON output:
 
+```bash
 xml
 <localfile>
   <log_format>json</log_format>
   <location>/var/log/suricata/eve.json</location>
 </localfile>
-
+```
 
 
 3. VirusTotal Automated Response
 Enabled automated threat lookups in the Wazuh Manager ossec.conf:
 
+```bash
 <integration>
   <name>virustotal</name>
   <api_key>[API_KEY_REDACTED]</api_key>
   <group>syscheck</group>
   <alert_format>json</alert_format>
 </integration>
-
+```
 
 
 Validation & Testing
